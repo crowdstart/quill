@@ -14,7 +14,7 @@
 //
 // Styleguide buttons
 
-color = #333
+color = #444
 
 // button-colorize(color)
 //
@@ -68,6 +68,7 @@ button-colorize(color)
 	&:disabled {
 		button-colorize(lighten(@color, 20%));
 		cursor:default;
+	    color: #999;
 	}
 	&.remove {
 		button-colorize(#c54);
