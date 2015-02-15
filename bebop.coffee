@@ -9,15 +9,19 @@ module.exports =
   cwd: process.cwd()
 
   include: [
+    /docs/
     /guide/
+    /src/
   ]
 
   compilers:
-    html: ->
-      "#{kss} #{kssArgs}"
+    html: (src) ->
+      if /^guide/.test src
+        "#{kss} #{kssArgs}"
 
     md: ->
-      "#{kss} #{kssArgs}"
+      if /^guide/.test src
+        "#{kss} #{kssArgs}"
 
-    styl: (file) ->
-      "#{stylus} #{file} -o docs/public"
+    styl: (src) ->
+      "#{stylus} guide/styles.styl -o docs/public"
