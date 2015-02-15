@@ -1,6 +1,6 @@
-// Button
+// button()
 //
-// A majority of buttons in the site are built from the same base class.
+// The `button()` mixin applies basic button styles.
 //
 // Markup: examples/elements/button.html
 //
@@ -49,9 +49,20 @@ button()
 
   -webkit-tap-highlight-color: tapColor
 
-// Button Groups
+  // Hover
+  &:hover
+    background-color: hoverBackgroundColor
+    background-image: hoverBackgroundImage
+    box-shadow: hoverBoxShadow
+    color: hoverColor
+
+  &:hover .icon
+    opacity: iconHoverOpacity
+
+
+// buttons()
 //
-// Buttons can exist together as a group
+// The `buttons()` mixin adds button group CSS.
 //
 // Markup: examples/elements/button-groups.html
 //
@@ -60,7 +71,7 @@ button()
 buttons()
   display: inline-block
   vertical-align: middle
-  margin: @verticalMargin @horizontalMargin 0em 0em
+  margin: verticalMargin horizontalMargin 0em 0em
 
   .button:hover, .active.button
     position: relative
@@ -76,22 +87,268 @@ buttons()
     border-left: none
 
   &:not(.basic):not(.inverted)
-    box-shadow: @groupBoxShadow
+    box-shadow: groupBoxShadow
 
   .button:not(.basic):not(.inverted), &:not(.basic):not(.inverted) > .button
-    box-shadow: @groupButtonBoxShadow
+    box-shadow: groupButtonBoxShadow
 
   .button
     margin: 0em
     float: left
     border-radius: 0em
-    margin: @groupButtonOffset
+    margin: groupButtonOffset
 
   .button:first-child
     margin-left: 0em
-    border-top-left-radius: @borderRadius
-    border-bottom-left-radius: @borderRadius
+    border-top-left-radius: borderRadius
+    border-bottom-left-radius: borderRadius
 
   .button:last-child
-    border-top-right-radius: @borderRadius
-    border-bottom-right-radius: @borderRadius
+    border-top-right-radius: borderRadius
+    border-bottom-right-radius: borderRadius
+
+// /*******************************
+//             States
+// *******************************/
+
+// /*--------------
+//       Focus
+// ---------------*/
+
+// .ui.button:focus {
+//   background-color: @focusBackgroundColor;
+//   color: @focusColor;
+//   background-image: @focusBackgroundImage !important;
+//   box-shadow: @focusBoxShadow !important;
+// }
+
+// .ui.button:focus .icon {
+//   opacity: @iconFocusOpacity;
+// }
+
+// /*--------------
+//       Down
+// ---------------*/
+
+// .ui.button:active,
+// .ui.active.button:active {
+//   background-color: @downBackgroundColor;
+//   background-image: @downBackgroundImage;
+//   color: @downColor;
+//   box-shadow: @downBoxShadow;
+// }
+
+// /*--------------
+//      Active
+// ---------------*/
+
+// .ui.active.button {
+//   background-color: @activeBackgroundColor;
+//   background-image: @activeBackgroundImage;
+//   box-shadow: @activeBoxShadow;
+//   color: @activeColor;
+// }
+// .ui.active.button:hover {
+//   background-color: @activeHoverBackgroundColor;
+//   background-image: @activeHoverBackgroundImage;
+//   color: @activeHoverColor;
+// }
+// .ui.active.button:active {
+//   background-color: @activeBackgroundColor;
+//   background-image: @activeBackgroundImage;
+// }
+
+
+// /*--------------
+//     Loading
+// ---------------*/
+
+// /* Specificity hack */
+// .ui.loading.loading.loading.loading.loading.loading.button {
+//   position: relative;
+//   cursor: default;
+//   point-events: none;
+//   text-shadow: none !important;
+//   color: transparent !important;
+//   transition: all 0s linear;
+// }
+// .ui.loading.button:before {
+//   position: absolute;
+//   content: '';
+//   top: 50%;
+//   left: 50%;
+
+//   margin: @loaderMargin;
+//   width: @loaderSize;
+//   height: @loaderSize;
+
+//   border-radius: @circularRadius;
+//   border: @loaderLineWidth solid @invertedLoaderFillColor;
+// }
+// .ui.loading.button:after {
+//   position: absolute;
+//   content: '';
+//   top: 50%;
+//   left: 50%;
+
+//   margin: @loaderMargin;
+//   width: @loaderSize;
+//   height: @loaderSize;
+
+//   animation: button-spin @loaderSpeed linear;
+//   animation-iteration-count: infinite;
+
+//   border-radius: @circularRadius;
+
+//   border-color: @invertedLoaderLineColor transparent transparent;
+//   border-style: solid;
+//   border-width: @loaderLineWidth;
+
+//   box-shadow: 0px 0px 0px 1px transparent;
+// }
+// .ui.labeled.icon.loading.button .icon {
+//   background-color: transparent;
+//   box-shadow: none;
+// }
+
+// @keyframes button-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+// .ui.basic.loading.button:not(.inverted):before {
+//   border-color: @loaderFillColor;
+// }
+// .ui.basic.loading.button:not(.inverted):after {
+//   border-top-color: @loaderLineColor;
+// }
+
+// /*-------------------
+//       Disabled
+// --------------------*/
+
+// .ui.buttons .disabled.button,
+// .ui.disabled.button,
+// .ui.disabled.button:hover,
+// .ui.disabled.active.button {
+//   cursor: default;
+//   background-color: @lightGrey !important;
+//   color: @lightTextColor !important;
+//   opacity: @disabledOpacity !important;
+//   background-image: none !important;
+//   box-shadow: none !important;
+//   pointer-events: none;
+// }
+
+// /* Basic Group With Disabled */
+// .ui.basic.buttons .ui.disabled.button {
+//   border-color: @disabledBorderColor;
+// }
+
+// /*******************************
+//              Types
+// *******************************/
+
+// /*-------------------
+//        Animated
+// --------------------*/
+
+// .ui.animated.button {
+//   position: relative;
+//   overflow: hidden;
+//   vertical-align: @animatedVerticalAlign;
+//   padding-right: 0em !important;
+// }
+
+// .ui.animated.button .content {
+//   will-change: transform, opacity;
+// }
+// .ui.animated.button .visible.content {
+//   position: relative;
+//   margin-right: @horizontalPadding;
+// }
+// .ui.animated.button .hidden.content {
+//   position: absolute;
+//   width: 100%;
+// }
+
+// /* Horizontal */
+// .ui.animated.button .visible.content,
+// .ui.animated.button .hidden.content {
+//   transition: right @animationDuration @animationEasing 0s;
+// }
+// .ui.animated.button .visible.content {
+//   left: auto;
+//   right: 0%;
+// }
+// .ui.animated.button .hidden.content {
+//   top: 50%;
+//   left: auto;
+//   right: -100%;
+//   margin-top: -0.5em;
+// }
+// .ui.animated.button:hover .visible.content {
+//   left: auto;
+//   right: 200%;
+// }
+// .ui.animated.button:hover .hidden.content {
+//   left: auto;
+//   right: 0%;
+// }
+
+// /* Vertical */
+// .ui.vertical.animated.button .visible.content,
+// .ui.vertical.animated.button .hidden.content {
+//   transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+// }
+// .ui.vertical.animated.button .visible.content {
+//   transform: translateY(0%);
+//   right: auto;
+// }
+// .ui.vertical.animated.button .hidden.content {
+//   top: -50%;
+//   left: 0%;
+//   right: auto;
+// }
+// .ui.vertical.animated.button:hover .visible.content {
+//   transform: translateY(200%);
+//   right: auto;
+// }
+// .ui.vertical.animated.button:hover .hidden.content {
+//   top: 50%;
+//   right: auto;
+// }
+
+// /* Fade */
+// .ui.fade.animated.button .visible.content,
+// .ui.fade.animated.button .hidden.content {
+//   transition: opacity @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+// }
+// .ui.fade.animated.button .visible.content {
+//   left: auto;
+//   right: auto;
+//   opacity: 1;
+//   transform: scale(1);
+// }
+// .ui.fade.animated.button .hidden.content {
+//   opacity: 0;
+//   left: 0%;
+//   right: auto;
+//   transform: scale(@fadeScaleHigh);
+// }
+// .ui.fade.animated.button:hover .visible.content {
+//   left: auto;
+//   right: auto;
+//   opacity: 0;
+//   transform: scale(@fadeScaleLow);
+// }
+// .ui.fade.animated.button:hover .hidden.content {
+//   left: 0%;
+//   right: auto;
+//   opacity: 1;
+//   transform: scale(1);
+// }
