@@ -21,10 +21,13 @@
     "url": "https://github.com/crowdstart/quill/issues"
   },
   "homepage": "https://github.com/crowdstart/quill",
-  "dependencies": {
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.5.0",
     "bebop": "^1.2.2",
     "executive": "^0.4.7",
+    "jeet": "^6.1.2",
     "kss": "^2.0.1",
-    "stylus": "^0.50.0"
+    "stylus": "^0.50.0",
+    "typographic": "^1.1.0"
   }
 }

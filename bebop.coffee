@@ -1,17 +1,19 @@
-exec = require 'executive'
+exec = require('executive').interactive
 
-stylus  = 'node_modules/.bin/stylus --sourcemap --sourcemap-inline'
-kssBin  = 'node_modules/.bin/kss-node'
-kssArgs = '--template=guide/template --source=src --source=guide --destination=docs --mask=*.styl'
-
+# Compile style guide into docs/
 kss = (done = ->) ->
-  exec [
-    "#{kssBin} #{kssArgs}"
-    "#{stylus} guide/styles.styl -o docs/public"
-  ], done
+  bin  = 'node_modules/.bin/kss-node'
+  args = '--template=guide/template --source=src --source=guide --destination=docs --mask=*.styl'
+  exec "#{bin} #{args}", -> stylus done
+
+# Compile stylus from guide into docs/
+stylus = (done = ->) ->
+  bin  = 'node_modules/.bin/stylus'
+  args = '-u autoprefixer-stylus --sourcemap --sourcemap-inline guide/template/public -o docs/public'
+  exec "#{bin} #{args}", done
 
 module.exports =
-  pre: kss
+  pre:       kss
   staticDir: 'docs/'
 
   include: [
@@ -23,4 +25,4 @@ module.exports =
   compilers:
     html: (src) -> kss() if /^guide/.test src
     md:   (src) -> kss() if /^guide/.test src
-    styl: (src) -> "#{stylus} guide/styles.styl -o docs/public"
+    styl: (src) -> stylus()

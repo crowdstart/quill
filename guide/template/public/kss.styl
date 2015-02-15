@@ -1,43 +1,53 @@
+@import 'node_modules/typographic/typographic'
+
 // ------------------------------------------------------------------------------
-//   @group Variables - Colors, Fonts, etc.
+//   Variables - Colors, Fonts, etc.
 // ------------------------------------------------------------------------------
-@kss-colors-background     : #fff;
+// Typography, fonts
+kss-ratio                  = golden
 
-@kss-colors-foreground     : #444;
-@kss-colors-heading        : #111;
-@kss-colors-quotes         : #666;
+kss-font-body             = helvetica
+kss-font-code             = Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace
 
-@kss-colors-link           : #0645ad;
-@kss-colors-link-visited   : #0645ad;
-@kss-colors-link-hover     : lighten(@kss-colors-link, 20%);
-@kss-colors-link-active    : #faa700;
+kss-font-size             = 12px
+kss-vertical-rhythm       = kss-font-size * kss-ratio
 
-@kss-font-body             : Helvetica, 'Helvetica Neue', Arial, sans-serif;
-@kss-font-code             : Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace;
+// typographic helpers
+t-presets(kss-ratio)
+t-headers(franklin)
 
-@kss-font-size             : 16px;
-@kss-vertical-rhythm       : @kss-font-size * 1.5;
+// Colors
+kss-colors-background     = #fff
+
+kss-colors-foreground     = #444
+kss-colors-heading        = #111
+kss-colors-quotes         = #666
+
+kss-colors-link           = #0645ad
+kss-colors-link-visited   = #0645ad
+kss-colors-link-hover     = lighten(kss-colors-link, 20%)
+kss-colors-link-active    = #faa700
 
 // ------------------------------------------------------------------------------
 // Wrap all of this template's base HTML styling inside a .kss-style selector.
 // ------------------------------------------------------------------------------
 
 .kss-style {
-	color: @kss-colors-foreground;
-	font-family: @kss-font-body;
-	font-size: @kss-font-size;
-	line-height: @kss-vertical-rhythm;
+	color: kss-colors-foreground;
+	font-family: kss-font-body;
+	font-size: kss-font-size;
+	line-height: kss-vertical-rhythm;
 
   a {
-    color: @kss-colors-link;
+    color: kss-colors-link;
     text-decoration: none;
     transition-property: color;
     transition-duration: 0.5s;
 
-    &:visited { color: @kss-colors-link-visited; }
+    &:visited { color: kss-colors-link-visited; }
     &:hover,
-    &:focus   { color: @kss-colors-link-hover;   }
-    &:active  { color: @kss-colors-link-active;  }
+    &:focus   { color: kss-colors-link-hover;   }
+    &:active  { color: kss-colors-link-active;  }
 
     &:hover,
     &:active {
@@ -46,13 +56,13 @@
   }
 
   p {
-    margin: (@kss-vertical-rhythm/2) 0 @kss-vertical-rhythm 0;
+    margin: (kss-vertical-rhythm/2) 0 kss-vertical-rhythm 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: @kss-vertical-rhythm 0 0 0;
-    font-family: @kss-font-body;
-    color: @kss-colors-heading;
+    margin: kss-vertical-rhythm 0 0 0;
+    font-family: kss-font-body;
+    color: kss-colors-heading;
     line-height: 1.15em;
   }
 
@@ -60,33 +70,33 @@
     font-weight: bold;
   }
 
-  h1 { font-size: @kss-font-size * 2.5;   }
-  h2 { font-size: @kss-font-size * 2.25;  }
-  h3 { font-size: @kss-font-size * 2.125; }
-  h4 { font-size: @kss-font-size * 2;     }
-  h5 { font-size: @kss-font-size * 1.875; }
-  h6 { font-size: @kss-font-size * 1.75;  }
+  h1 { font-size: kss-font-size * 2.5;   }
+  h2 { font-size: kss-font-size * 2.25;  }
+  h3 { font-size: kss-font-size * 2.125; }
+  h4 { font-size: kss-font-size * 2;     }
+  h5 { font-size: kss-font-size * 1.875; }
+  h6 { font-size: kss-font-size * 1.75;  }
 
   blockquote {
-    color: @kss-colors-quotes;
+    color: kss-colors-quotes;
     margin: 0;
-    padding-left: @kss-vertical-rhythm;
-    border-left: 0.5em mix(@kss-colors-quotes, @kss-colors-background, 25%) solid;
+    padding-left: kss-vertical-rhythm;
+    border-left: 0.5em mix(kss-colors-quotes, kss-colors-background, 25%) solid;
   }
 
   hr {
     display: block;
     height: 2px;
     border: 0;
-    border-top: 1px solid lighten(@kss-colors-foreground, 60%);
-    border-bottom: 1px solid darken(@kss-colors-background, 10%);
-    margin: @kss-vertical-rhythm 0;
+    border-top: 1px solid lighten(kss-colors-foreground, 60%);
+    border-bottom: 1px solid darken(kss-colors-background, 10%);
+    margin: kss-vertical-rhythm 0;
     padding: 0;
   }
 
   pre, code, kbd, samp {
-    font-family: @kss-font-code;
-    color: mix(@kss-colors-foreground, @kss-colors-heading, 50%);
+    font-family: kss-font-code;
+    color: mix(kss-colors-foreground, kss-colors-heading, 50%);
     font-size: 1em;
   }
 
@@ -97,13 +107,13 @@
   }
 
   ins {
-    color: @kss-colors-heading;
+    color: kss-colors-heading;
     background: #ff9;
     text-decoration: none;
   }
 
   mark {
-    color: @kss-colors-heading;
+    color: kss-colors-heading;
     background: #ff0;
     font-weight: bold;
   }
@@ -118,14 +128,14 @@
   sub { bottom: -0.25em; }
 
   ul, ol {
-    margin: @kss-vertical-rhythm 0;
-    padding: 0 0 0 @kss-vertical-rhythm;
+    margin: kss-vertical-rhythm 0;
+    padding: 0 0 0 kss-vertical-rhythm;
   }
   li p:last-child {
     margin: 0;
   }
   dd {
-    margin: 0 0 0 @kss-vertical-rhythm;
+    margin: 0 0 0 kss-vertical-rhythm;
   }
 
   img {
@@ -171,24 +181,9 @@
 
     /* Old browsers */
     background: #eee;
-    /* FF3.6+ */
-    background: -webkit-linear-gradient(left, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                -webkit-linear-gradient(left, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* Chrome, Safari4+ */
-    background:        -webkit-gradient(linear, left top, right top, color-stop(0%,#eee), color-stop(50%,#e5e5e5), color-stop(100%,#d7d7d7)) 20% 0 ~"/ 10px 1px" repeat-y,
-                       -webkit-gradient(linear, left top, right top, color-stop(0%,#eee), color-stop(20%,#eee), color-stop(20%,#fff)) 0 0 ~"/ 100% 1px";
-    /* Chrome10+, Safari5.1+ */
-    background: -webkit-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                -webkit-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* Opera 11.10+ */
-    background:      -o-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                     -o-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* IE10+ */
-    background:     -ms-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                    -ms-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-    /* W3C */
-    background:         linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y,
-                        linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
+
+    background:         linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 / 10px 1px repeat-y,
+                        linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 / 100% 1px;
 
     .kss-main,
     .kss-sidebar {
@@ -242,15 +237,15 @@
   }
 
   .kss-nav__menu {
-    margin-top: (@kss-vertical-rhythm/2);
-    margin-bottom: (@kss-vertical-rhythm/2);
+    margin-top: (kss-vertical-rhythm/2);
+    margin-bottom: (kss-vertical-rhythm/2);
     padding: 0;
     list-style-type: none;
   }
 
   .kss-nav__menu-item {
     display: inline-block;
-    padding-right: @kss-vertical-rhythm;
+    padding-right: kss-vertical-rhythm;
 
     @media screen and (min-width: 769px) {
       display: list-item;
@@ -292,7 +287,7 @@
 
   .kss-section {
     max-width: 48em;
-    margin-bottom: (@kss-vertical-rhythm * 2);
+    margin-bottom: (kss-vertical-rhythm * 2);
   }
 
 
@@ -301,8 +296,8 @@
   }
   .kss-title__ref {
     display: block;
-    font-size: @kss-font-size;
-    line-height: @kss-font-size;
+    font-size: kss-font-size;
+    line-height: kss-font-size;
     color: #666;
 
     &:before {
@@ -317,7 +312,7 @@
     &:hover,
     &:focus,
     &:active {
-      color: @kss-colors-link;
+      color: kss-colors-link;
 
       @media screen and (min-width: 607px) {
         .kss-title__permalink-hash {
@@ -363,7 +358,7 @@
   }
   .kss-modifier__default-name {
     font-weight: bold;
-    margin-bottom: (@kss-vertical-rhythm / 2);
+    margin-bottom: (kss-vertical-rhythm / 2);
   }
   .kss-modifier__name {
     float: left;
@@ -371,12 +366,12 @@
     font-weight: bold;
   }
   .kss-modifier__description {
-    margin-bottom: (@kss-vertical-rhythm / 2);
+    margin-bottom: (kss-vertical-rhythm / 2);
   }
   .kss-modifier__example {
     clear: left;
     padding: 1px 0; // Contain the example's margins.
-    margin: 0 0 (@kss-vertical-rhythm - 1px) 0;
+    margin: 0 0 (kss-vertical-rhythm - 1px) 0;
 
     &:last-child {
       margin: 0;
@@ -384,7 +379,7 @@
   }
 
   .kss-markup {
-    margin: -1px 0 @kss-vertical-rhythm 0;
+    margin: -1px 0 kss-vertical-rhythm 0;
     border: 1px solid #999;
   }
   .kss-markup pre {
