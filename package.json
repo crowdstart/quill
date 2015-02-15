@@ -1,0 +1,28 @@
+{
+  "name": "quill",
+  "version": "1.0.0",
+  "description": "Semantic Mixin Library for Stylus",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crowdstart/quill.git"
+  },
+  "keywords": [
+    "css",
+    "stylus",
+    "semantic"
+  ],
+  "author": "David Tai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crowdstart/quill/issues"
+  },
+  "homepage": "https://github.com/crowdstart/quill",
+  "dependencies": {
+    "bebop": "^1.1.19",
+    "stylus": "^0.50.0"
+  }
+}
