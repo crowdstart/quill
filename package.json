@@ -28,6 +28,7 @@
     "jeet": "^6.1.2",
     "kss": "^2.0.1",
     "stylus": "^0.50.0",
+    "stylus-normalize": "^3.0.3",
     "typographic": "^1.1.0"
   }
 }
