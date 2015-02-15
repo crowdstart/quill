@@ -1,0 +1,105 @@
+// Button
+//
+// A majority of buttons in the site are built from the same base class.
+//
+// Markup: examples/elements/button.html
+//
+// .active       - A button can show it is currently the active user selection
+// .basic        - A basic button is less pronounced
+// .icon         - A button can have only an icon
+// .labeled.icon - A button can have an icon and a label
+// .loading      - A button can show a loading indicator
+// :active       - A button can change when pressed using touch or mouse events
+// :disabled     - A button can show it is currently unable to be interacted with
+// :hover        - A button can change to show a user has hovered their mouse
+//
+// Styleguide elements.button
+
+button()
+  cursor: pointer
+  display: inline-block
+
+  min-height: 1em
+
+  outline: none
+  border: none
+  vertical-align: verticalAlign
+  background-color: backgroundColor
+  color: textColor
+
+  font-family: fontFamily
+
+  margin: 0em horizontalMargin verticalMargin 0em
+  padding: verticalPadding horizontalPadding (verticalPadding + shadowOffset)
+
+  text-transform: textTransform
+  text-shadow: textShadow
+  font-weight: fontWeight
+  line-height: 1
+  font-style: normal
+  text-align: center
+  text-decoration: none
+
+  background-image: backgroundImage
+  border-radius: borderRadius
+  box-shadow: boxShadow
+
+  user-select: none
+  transition: transition
+
+  -webkit-tap-highlight-color: tapColor
+
+// Button Groups
+//
+// Buttons can exist together as a group
+//
+// Markup: examples/elements/button-groups.html
+//
+// Styleguide elements.button.groups
+
+buttons()
+  .ui.buttons {
+    display: inline-block;
+    vertical-align: middle;
+    margin: @verticalMargin @horizontalMargin 0em 0em;
+  }
+  .ui.buttons > .button:hover,
+  .ui.buttons > .active.button {
+    position: relative;
+  }
+  .ui.buttons:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .ui.buttons .button:first-child {
+    border-left: none;
+  }
+
+  .ui.buttons:not(.basic):not(.inverted) {
+    box-shadow: @groupBoxShadow;
+  }
+  .ui.buttons > .ui.button:not(.basic):not(.inverted),
+  .ui.buttons:not(.basic):not(.inverted) > .button {
+    box-shadow: @groupButtonBoxShadow;
+  }
+
+
+  .ui.buttons .button {
+    margin: 0em;
+    float: left;
+    border-radius: 0em;
+    margin: @groupButtonOffset;
+  }
+
+  .ui.buttons .button:first-child  {
+    margin-left: 0em;
+    border-top-left-radius: @borderRadius;
+    border-bottom-left-radius: @borderRadius;
+  }
+  .ui.buttons .button:last-child {
+    border-top-right-radius: @borderRadius;
+    border-bottom-right-radius: @borderRadius;
+  }
