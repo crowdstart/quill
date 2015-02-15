@@ -11,7 +11,7 @@ kss = (cb = ->) ->
     exec "#{stylus} guide/styles.styl -o docs/public", cb
 
 module.exports =
-  cwd: process.cwd()
+  staticDir: 'docs/'
 
   pre: kss
 
