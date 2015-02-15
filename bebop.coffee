@@ -1,19 +1,18 @@
 exec = require 'executive'
-fs   = require 'fs'
-path = require 'path'
 
 stylus  = 'node_modules/.bin/stylus --sourcemap --sourcemap-inline'
 kssBin  = 'node_modules/.bin/kss-node'
 kssArgs = '--template=guide/template --source=src --source=guide --destination=docs --mask=*.styl'
 
-kss = (cb = ->) ->
-  exec "#{kssBin} #{kssArgs}", ->
-    exec "#{stylus} guide/styles.styl -o docs/public", cb
+kss = (done = ->) ->
+  exec [
+    "#{kssBin} #{kssArgs}"
+    "#{stylus} guide/styles.styl -o docs/public"
+  ], done
 
 module.exports =
-  staticDir: 'docs/'
-
   pre: kss
+  staticDir: 'docs/'
 
   include: [
     /docs/
@@ -22,11 +21,6 @@ module.exports =
   ]
 
   compilers:
-    html: (src) ->
-      kss() if /^guide/.test src
-
-    md: ->
-      kss() if /^guide/.test src
-
-    styl: (src) ->
-      "#{stylus} guide/styles.styl -o docs/public"
+    html: (src) -> kss() if /^guide/.test src
+    md:   (src) -> kss() if /^guide/.test src
+    styl: (src) -> "#{stylus} guide/styles.styl -o docs/public"
