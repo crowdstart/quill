@@ -6,11 +6,11 @@
 //
 // .active       - A button can show it is currently the active user selection
 // .basic        - A basic button is less pronounced
+// .disabled     - A button can show it is currently unable to be interacted with
 // .icon         - A button can have only an icon
 // .labeled.icon - A button can have an icon and a label
 // .loading      - A button can show a loading indicator
 // :active       - A button can change when pressed using touch or mouse events
-// :disabled     - A button can show it is currently unable to be interacted with
 // :hover        - A button can change to show a user has hovered their mouse
 //
 // Styleguide elements.button
@@ -59,6 +59,167 @@ button()
   &:hover .icon
     opacity: iconHoverOpacity
 
+  // Focus
+  &:focus
+    background-color: focusBackgroundColor
+    color: focusColor
+    background-image: focusBackgroundImage !important
+    box-shadow: focusBoxShadow !important
+
+  &:focus .icon
+    opacity: iconFocusOpacity
+
+  // Down
+  &:active, &.active:active
+    background-color: downBackgroundColor
+    background-image: downBackgroundImage
+    color: downColor
+    box-shadow: downBoxShadow
+
+  // Active
+  &.active
+    background-color: activeBackgroundColor
+    background-image: activeBackgroundImage
+    box-shadow: activeBoxShadow
+    color: activeColor
+
+  &.active:hover
+    background-color: activeHoverBackgroundColor
+    background-image: activeHoverBackgroundImage
+    color: activeHoverColor
+
+  &.active:active
+    background-color: activeBackgroundColor
+    background-image: activeBackgroundImage
+
+  // Basic
+  &.basic.buttons &, &.basic
+    background: basicBackground !important
+    background-image: none
+    color: basicTextColor !important
+    font-weight: basicFontWeight
+    border-radius: basicBorderRadius
+    text-transform: basicTextTransform
+    text-shadow: none !important
+    box-shadow: basicBoxShadow
+
+  &.basic.buttons
+    box-shadow: basicGroupBoxShadow
+    border-radius: borderRadius
+
+  &.basic.buttons
+    border-radius: 0em
+
+  &.basic.buttons :hover, &.basic:hover
+    background: basicHoverBackground !important
+    color: basicHoverTextColor !important
+    box-shadow: basicHoverBoxShadow
+
+  &.basic.buttons :active,
+  &.basic:active
+    background: basicDownBackground !important
+    color: basicDownTextColor !important
+    box-shadow: basicDownBoxShadow
+
+  &.basic.buttons .active.button,
+  &.basic.active
+    background: basicActiveBackground !important
+    box-shadow: basicActiveBoxShadow !important
+    color: basicActiveTextColor
+    box-shadow: selectedBorderColor
+
+  &.basic.buttons .active:hover,
+  &.basic.active:hover
+    background-color: transparentBlack
+
+  // Vertical
+  &.basic.buttons :hover
+    box-shadow: basicHoverBoxShadow inset
+
+  &.basic.buttons :active
+    box-shadow: basicDownBoxShadow inset
+
+  &.basic.buttons .active
+    box-shadow: selectedBorderColor inset
+
+  // Loading
+
+  // Specificity hack
+  &.loading.loading.loading.loading.loading.loading
+    position: relative
+    cursor: default
+    point-events: none
+    text-shadow: none !important
+    color: transparent !important
+    transition: all 0s linear
+
+  &.loading:before
+    position: absolute
+    content: ''
+    top: 50%
+    left: 50%
+
+    margin: loaderMargin
+    width: loaderSize
+    height: loaderSize
+
+    border-radius: circularRadius
+    border: loaderLineWidth solid invertedLoaderFillColor
+
+  &.loading:after
+    position: absolute
+    content: ''
+    top: 50%
+    left: 50%
+
+    margin: loaderMargin
+    width: loaderSize
+    height: loaderSize
+
+    animation: button-spin loaderSpeed linear
+    animation-iteration-count: infinite
+
+    border-radius: circularRadius
+
+    border-color: invertedLoaderLineColor transparent transparent
+    border-style: solid
+    border-width: loaderLineWidth
+
+    box-shadow: 0px 0px 0px 1px transparent
+
+  &.labeled.icon.loading .icon
+    background-color: transparent
+    box-shadow: none
+
+  @keyframes button-spin
+    from
+      transform: rotate(0deg)
+    to
+      transform: rotate(360deg)
+
+  &.basic.loading:not(.inverted):before
+    border-color: loaderFillColor
+
+  &.basic.loading:not(.inverted):after
+    border-top-color: loaderLineColor
+
+  // Disabled
+
+  .buttons &.disabled,
+  &.disabled,
+  &.disabled:hover,
+  &.disabled.active
+    cursor: default
+    background-color: lightGrey !important
+    color: lightTextColor !important
+    opacity: disabledOpacity !important
+    background-image: none !important
+    box-shadow: none !important
+    pointer-events: none
+
+  // Basic Group With Disabled
+  .basic.buttons &.disabled
+    border-color: disabledBorderColor
 
 // buttons()
 //
@@ -107,248 +268,3 @@ buttons()
     border-top-right-radius: borderRadius
     border-bottom-right-radius: borderRadius
 
-// /*******************************
-//             States
-// *******************************/
-
-// /*--------------
-//       Focus
-// ---------------*/
-
-// .ui.button:focus {
-//   background-color: @focusBackgroundColor;
-//   color: @focusColor;
-//   background-image: @focusBackgroundImage !important;
-//   box-shadow: @focusBoxShadow !important;
-// }
-
-// .ui.button:focus .icon {
-//   opacity: @iconFocusOpacity;
-// }
-
-// /*--------------
-//       Down
-// ---------------*/
-
-// .ui.button:active,
-// .ui.active.button:active {
-//   background-color: @downBackgroundColor;
-//   background-image: @downBackgroundImage;
-//   color: @downColor;
-//   box-shadow: @downBoxShadow;
-// }
-
-// /*--------------
-//      Active
-// ---------------*/
-
-// .ui.active.button {
-//   background-color: @activeBackgroundColor;
-//   background-image: @activeBackgroundImage;
-//   box-shadow: @activeBoxShadow;
-//   color: @activeColor;
-// }
-// .ui.active.button:hover {
-//   background-color: @activeHoverBackgroundColor;
-//   background-image: @activeHoverBackgroundImage;
-//   color: @activeHoverColor;
-// }
-// .ui.active.button:active {
-//   background-color: @activeBackgroundColor;
-//   background-image: @activeBackgroundImage;
-// }
-
-
-// /*--------------
-//     Loading
-// ---------------*/
-
-// /* Specificity hack */
-// .ui.loading.loading.loading.loading.loading.loading.button {
-//   position: relative;
-//   cursor: default;
-//   point-events: none;
-//   text-shadow: none !important;
-//   color: transparent !important;
-//   transition: all 0s linear;
-// }
-// .ui.loading.button:before {
-//   position: absolute;
-//   content: '';
-//   top: 50%;
-//   left: 50%;
-
-//   margin: @loaderMargin;
-//   width: @loaderSize;
-//   height: @loaderSize;
-
-//   border-radius: @circularRadius;
-//   border: @loaderLineWidth solid @invertedLoaderFillColor;
-// }
-// .ui.loading.button:after {
-//   position: absolute;
-//   content: '';
-//   top: 50%;
-//   left: 50%;
-
-//   margin: @loaderMargin;
-//   width: @loaderSize;
-//   height: @loaderSize;
-
-//   animation: button-spin @loaderSpeed linear;
-//   animation-iteration-count: infinite;
-
-//   border-radius: @circularRadius;
-
-//   border-color: @invertedLoaderLineColor transparent transparent;
-//   border-style: solid;
-//   border-width: @loaderLineWidth;
-
-//   box-shadow: 0px 0px 0px 1px transparent;
-// }
-// .ui.labeled.icon.loading.button .icon {
-//   background-color: transparent;
-//   box-shadow: none;
-// }
-
-// @keyframes button-spin {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
-
-// .ui.basic.loading.button:not(.inverted):before {
-//   border-color: @loaderFillColor;
-// }
-// .ui.basic.loading.button:not(.inverted):after {
-//   border-top-color: @loaderLineColor;
-// }
-
-// /*-------------------
-//       Disabled
-// --------------------*/
-
-// .ui.buttons .disabled.button,
-// .ui.disabled.button,
-// .ui.disabled.button:hover,
-// .ui.disabled.active.button {
-//   cursor: default;
-//   background-color: @lightGrey !important;
-//   color: @lightTextColor !important;
-//   opacity: @disabledOpacity !important;
-//   background-image: none !important;
-//   box-shadow: none !important;
-//   pointer-events: none;
-// }
-
-// /* Basic Group With Disabled */
-// .ui.basic.buttons .ui.disabled.button {
-//   border-color: @disabledBorderColor;
-// }
-
-// /*******************************
-//              Types
-// *******************************/
-
-// /*-------------------
-//        Animated
-// --------------------*/
-
-// .ui.animated.button {
-//   position: relative;
-//   overflow: hidden;
-//   vertical-align: @animatedVerticalAlign;
-//   padding-right: 0em !important;
-// }
-
-// .ui.animated.button .content {
-//   will-change: transform, opacity;
-// }
-// .ui.animated.button .visible.content {
-//   position: relative;
-//   margin-right: @horizontalPadding;
-// }
-// .ui.animated.button .hidden.content {
-//   position: absolute;
-//   width: 100%;
-// }
-
-// /* Horizontal */
-// .ui.animated.button .visible.content,
-// .ui.animated.button .hidden.content {
-//   transition: right @animationDuration @animationEasing 0s;
-// }
-// .ui.animated.button .visible.content {
-//   left: auto;
-//   right: 0%;
-// }
-// .ui.animated.button .hidden.content {
-//   top: 50%;
-//   left: auto;
-//   right: -100%;
-//   margin-top: -0.5em;
-// }
-// .ui.animated.button:hover .visible.content {
-//   left: auto;
-//   right: 200%;
-// }
-// .ui.animated.button:hover .hidden.content {
-//   left: auto;
-//   right: 0%;
-// }
-
-// /* Vertical */
-// .ui.vertical.animated.button .visible.content,
-// .ui.vertical.animated.button .hidden.content {
-//   transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
-// }
-// .ui.vertical.animated.button .visible.content {
-//   transform: translateY(0%);
-//   right: auto;
-// }
-// .ui.vertical.animated.button .hidden.content {
-//   top: -50%;
-//   left: 0%;
-//   right: auto;
-// }
-// .ui.vertical.animated.button:hover .visible.content {
-//   transform: translateY(200%);
-//   right: auto;
-// }
-// .ui.vertical.animated.button:hover .hidden.content {
-//   top: 50%;
-//   right: auto;
-// }
-
-// /* Fade */
-// .ui.fade.animated.button .visible.content,
-// .ui.fade.animated.button .hidden.content {
-//   transition: opacity @animationDuration @animationEasing, transform @animationDuration @animationEasing;
-// }
-// .ui.fade.animated.button .visible.content {
-//   left: auto;
-//   right: auto;
-//   opacity: 1;
-//   transform: scale(1);
-// }
-// .ui.fade.animated.button .hidden.content {
-//   opacity: 0;
-//   left: 0%;
-//   right: auto;
-//   transform: scale(@fadeScaleHigh);
-// }
-// .ui.fade.animated.button:hover .visible.content {
-//   left: auto;
-//   right: auto;
-//   opacity: 0;
-//   transform: scale(@fadeScaleLow);
-// }
-// .ui.fade.animated.button:hover .hidden.content {
-//   left: 0%;
-//   right: auto;
-//   opacity: 1;
-//   transform: scale(1);
-// }
