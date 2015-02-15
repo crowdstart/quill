@@ -4,29 +4,77 @@
 //   Variables - Colors, Fonts, etc.
 // ------------------------------------------------------------------------------
 // Typography, fonts
-kss-ratio                  = golden
+kss-ratio                = golden
 
-kss-font-body             = helvetica
-kss-font-code             = Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace
+kss-font-body           = helvetica
+kss-font-code           = Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace
 
-kss-font-size             = 12px
-kss-vertical-rhythm       = kss-font-size * kss-ratio
+kss-font-size           = 12px
+kss-vertical-rhythm     = kss-font-size * kss-ratio
 
 // typographic helpers
-t-presets(kss-ratio)
-t-headers(franklin)
+t-headers(helvetica)
+
+html
+  font-family: kss-font-body
+  line-height: kss-vertical-rhythm
+
+h1, h2, h3, h4, h5, h6
+  margin-top:    0
+  margin-bottom: t-scale(.5, kss-ratio)
+h1
+  font-size:     t-scale(2, kss-ratio)
+  line-height:   t-scale(2, kss-ratio)
+h2
+  font-size:     t-scale(1.75, kss-ratio)
+  line-height:   t-scale(1.75, kss-ratio)
+h3
+  font-size:     t-scale(1.5, kss-ratio)
+  line-height:   t-scale(1.5, kss-ratio)
+h4
+  font-size:     t-scale(1.25, kss-ratio)
+  line-height:   t-scale(1.25, kss-ratio)
+h5
+  font-size:     t-scale(1, kss-ratio)
+  line-height:   t-scale(1, kss-ratio)
+h6
+  font-size:     t-scale(.75, kss-ratio)
+  line-height:   t-scale(.75, kss-ratio)
+
+// Base
+p, ul, ol, label, input, textarea, fieldset, dl, blockquote
+  margin-top:    0
+  margin-bottom: t-scale(1, kss-ratio)
+
+label
+  margin-bottom: 0
+ul
+  padding-left: t-scale(1.2, kss-ratio)
+ol
+  padding-left: t-scale(1.3, kss-ratio)
+li, dd
+  margin-bottom: t-scale(.25, kss-ratio)
+dt
+  font-weight: bold
+dd
+  margin-left: 0
+
+blockquote
+  margin-left: 0
+  cite
+    display: block
 
 // Colors
-kss-colors-background     = #fff
+kss-colors-background   = #fff
 
-kss-colors-foreground     = #444
-kss-colors-heading        = #111
-kss-colors-quotes         = #666
+kss-colors-foreground   = #444
+kss-colors-heading      = #111
+kss-colors-quotes       = #666
 
-kss-colors-link           = #0645ad
-kss-colors-link-visited   = #0645ad
-kss-colors-link-hover     = lighten(kss-colors-link, 20%)
-kss-colors-link-active    = #faa700
+kss-colors-link         = #0645ad
+kss-colors-link-visited = #0645ad
+kss-colors-link-hover   = lighten(kss-colors-link, 20%)
+kss-colors-link-active  = #faa700
 
 // ------------------------------------------------------------------------------
 // Wrap all of this template's base HTML styling inside a .kss-style selector.
@@ -34,9 +82,6 @@ kss-colors-link-active    = #faa700
 
 .kss-style {
 	color: kss-colors-foreground;
-	font-family: kss-font-body;
-	font-size: kss-font-size;
-	line-height: kss-vertical-rhythm;
 
   a {
     color: kss-colors-link;
@@ -60,22 +105,8 @@ kss-colors-link-active    = #faa700
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: kss-vertical-rhythm 0 0 0;
-    font-family: kss-font-body;
     color: kss-colors-heading;
-    line-height: 1.15em;
   }
-
-  h4, h5, h6 {
-    font-weight: bold;
-  }
-
-  h1 { font-size: kss-font-size * 2.5;   }
-  h2 { font-size: kss-font-size * 2.25;  }
-  h3 { font-size: kss-font-size * 2.125; }
-  h4 { font-size: kss-font-size * 2;     }
-  h5 { font-size: kss-font-size * 1.875; }
-  h6 { font-size: kss-font-size * 1.75;  }
 
   blockquote {
     color: kss-colors-quotes;
@@ -97,7 +128,7 @@ kss-colors-link-active    = #faa700
   pre, code, kbd, samp {
     font-family: kss-font-code;
     color: mix(kss-colors-foreground, kss-colors-heading, 50%);
-    font-size: 1em;
+    font-size: t-scale(kss-ratio, 0.5)
   }
 
   pre {
@@ -119,8 +150,6 @@ kss-colors-link-active    = #faa700
   }
 
   sub, sup {
-    font-size: 75%;
-    line-height: 0;
     position: relative;
     vertical-align: baseline;
   }
@@ -177,7 +206,7 @@ kss-colors-link-active    = #faa700
   background: #fff;
 
   @media screen and (min-width: 769px) {
-    padding: 0;
+    padding: 20px;
 
     /* Old browsers */
     background: #eee;
@@ -222,22 +251,14 @@ kss-colors-link-active    = #faa700
 #kss-node {
 
   .kss-doc-title {
+    font-size: t-scale(kss-ratio, 0.75);
+    line-height: t-scale(kss-ratio, 1);
     margin: 0;
 
-    @media screen and (min-width: 769px) {
-      font-size: 1.5em;
-    }
-  }
-
-  .kss-header,
-  .kss-nav {
-    @media screen and (min-width: 769px) {
-      margin-top: 2em;
-    }
   }
 
   .kss-nav__menu {
-    margin-top: (kss-vertical-rhythm/2);
+    font-size: (kss-vertical-rhythm)
     margin-bottom: (kss-vertical-rhythm/2);
     padding: 0;
     list-style-type: none;
@@ -254,6 +275,9 @@ kss-colors-link-active    = #faa700
   }
 
   .kss-nav__menu-child {
+    font-size: t-scale(kss-ratio, 0.5)
+    margin-bottom: (kss-vertical-rhythm/2);
+
     display: none;
 
     @media screen and (min-width: 769px) {
@@ -293,11 +317,12 @@ kss-colors-link-active    = #faa700
 
   .kss-title {
     margin-bottom: 0;
+    font-size: t-scale(kss-ratio, 1.5);
   }
   .kss-title__ref {
     display: block;
-    font-size: kss-font-size;
-    line-height: kss-font-size;
+    font-size: t-scale(kss-ratio, 0.75)
+    line-height: t-scale(kss-ratio, 0.75)
     color: #666;
 
     &:before {
@@ -323,8 +348,8 @@ kss-colors-link-active    = #faa700
   }
   .kss-title__permalink-hash {
     display: none;
-    font-size: 80%;
-    line-height: 1;
+    // font-size: 80%;
+    // line-height: 1;
     color: #ccc;
   }
 
@@ -370,8 +395,6 @@ kss-colors-link-active    = #faa700
   }
   .kss-modifier__example {
     clear: left;
-    padding: 1px 0; // Contain the example's margins.
-    margin: 0 0 (kss-vertical-rhythm - 1px) 0;
 
     &:last-child {
       margin: 0;
@@ -380,14 +403,14 @@ kss-colors-link-active    = #faa700
 
   .kss-markup {
     margin: -1px 0 kss-vertical-rhythm 0;
-    border: 1px solid #999;
+    border: 1px solid #ccc;
   }
   .kss-markup pre {
     margin: 0;
   }
 
   .kss-color {
-    line-height: 50px;
+    // line-height: 50px;
   }
   .kss-color__swatch {
     display: inline-block;
@@ -453,26 +476,17 @@ kss-colors-link-active    = #faa700
 
   /* Specify class=linenums on a pre to get line numbering */
   ol.linenums {
+    background-color: #fdfdfd;
     margin: 0;
     padding: 0 0 3px 0;
     list-style-type: none;
 
     li {
-      border-bottom: 1px solid #eee;
       padding: 0 10px;
-      background: #fff;
 
       &:first-child {
-        padding-top: 3px;
+        padding-top: 10px;
       }
-    }
-    /* Alternate shading for lines */
-    li.L0,
-    li.L2,
-    li.L4,
-    li.L6,
-    li.L8 {
-      background: #fcfcfc;
     }
   }
 }
