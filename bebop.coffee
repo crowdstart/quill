@@ -1,11 +1,12 @@
 fs   = require 'fs'
 path = require 'path'
 
-kss = 'node_modules/.bin/kss-node'
+stylus  = 'node_modules/.bin/stylus -u --sourcemap --sourcemap-inline'
+kss     = 'node_modules/.bin/kss-node --css'
 
 module.exports =
   cwd: process.cwd()
 
   compilers:
     styl: ->
-      "#{kss} src docs"
+      "stylus test\\styles.styl test\\styles.css #{kss} test\\styles.css test docs"
