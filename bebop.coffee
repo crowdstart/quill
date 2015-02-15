@@ -1,3 +1,4 @@
+exec = require 'executive'
 fs   = require 'fs'
 path = require 'path'
 
@@ -7,6 +8,9 @@ kssArgs = '--template=guide/template --source=src --source=guide --mask="*.styl"
 
 module.exports =
   cwd: process.cwd()
+
+  pre: (done) ->
+    exec "#{kss} #{kssArgs}", done
 
   include: [
     /docs/

@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/crowdstart/quill",
   "dependencies": {
-    "bebop": "^1.1.21",
+    "bebop": "^1.2.0",
+    "executive": "^0.4.7",
     "kss": "^2.0.1",
     "stylus": "^0.50.0"
   }
