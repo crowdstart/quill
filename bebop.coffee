@@ -23,12 +23,10 @@ module.exports =
 
   compilers:
     html: (src) ->
-      if /^guide/.test src
-        kss()
+      kss() if /^guide/.test src
 
     md: ->
-      if /^guide/.test src
-        kss()
+      kss() if /^guide/.test src
 
     styl: (src) ->
       "#{stylus} guide/styles.styl -o docs/public"
