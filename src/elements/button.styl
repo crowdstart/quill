@@ -58,48 +58,40 @@ button()
 // Styleguide elements.button.groups
 
 buttons()
-  .ui.buttons {
-    display: inline-block;
-    vertical-align: middle;
-    margin: @verticalMargin @horizontalMargin 0em 0em;
-  }
-  .ui.buttons > .button:hover,
-  .ui.buttons > .active.button {
-    position: relative;
-  }
-  .ui.buttons:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-  }
-  .ui.buttons .button:first-child {
-    border-left: none;
-  }
+  display: inline-block
+  vertical-align: middle
+  margin: @verticalMargin @horizontalMargin 0em 0em
 
-  .ui.buttons:not(.basic):not(.inverted) {
-    box-shadow: @groupBoxShadow;
-  }
-  .ui.buttons > .ui.button:not(.basic):not(.inverted),
-  .ui.buttons:not(.basic):not(.inverted) > .button {
-    box-shadow: @groupButtonBoxShadow;
-  }
+  .button:hover, .active.button
+    position: relative
 
+  &:after
+    content: "."
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
 
-  .ui.buttons .button {
-    margin: 0em;
-    float: left;
-    border-radius: 0em;
-    margin: @groupButtonOffset;
-  }
+  .button:first-child
+    border-left: none
 
-  .ui.buttons .button:first-child  {
-    margin-left: 0em;
-    border-top-left-radius: @borderRadius;
-    border-bottom-left-radius: @borderRadius;
-  }
-  .ui.buttons .button:last-child {
-    border-top-right-radius: @borderRadius;
-    border-bottom-right-radius: @borderRadius;
-  }
+  &:not(.basic):not(.inverted)
+    box-shadow: @groupBoxShadow
+
+  .button:not(.basic):not(.inverted), &:not(.basic):not(.inverted) > .button
+    box-shadow: @groupButtonBoxShadow
+
+  .button
+    margin: 0em
+    float: left
+    border-radius: 0em
+    margin: @groupButtonOffset
+
+  .button:first-child
+    margin-left: 0em
+    border-top-left-radius: @borderRadius
+    border-bottom-left-radius: @borderRadius
+
+  .button:last-child
+    border-top-right-radius: @borderRadius
+    border-bottom-right-radius: @borderRadius
