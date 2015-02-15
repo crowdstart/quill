@@ -1,10 +1,7 @@
 @import 'node_modules/typographic/typographic'
 
-// ------------------------------------------------------------------------------
-//   Variables - Colors, Fonts, etc.
-// ------------------------------------------------------------------------------
 // Typography, fonts
-kss-ratio                = golden
+kss-ratio               = golden
 
 kss-font-body           = helvetica
 kss-font-code           = Inconsolata-dz, Menlo, 'Ubuntu Mono', 'Lucida Console', 'Courier New', Courier, monospace
@@ -12,11 +9,27 @@ kss-font-code           = Inconsolata-dz, Menlo, 'Ubuntu Mono', 'Lucida Console'
 kss-font-size           = 12px
 kss-vertical-rhythm     = t-scale(1, kss-ratio)
 
-// typographic helpers
-t-headers(helvetica)
+// Colors
+kss-colors-background   = #fff
+
+kss-colors-foreground   = #444
+kss-colors-heading      = #111
+kss-colors-quotes       = #666
+
+kss-colors-link         = #0645ad
+kss-colors-link-visited = #0645ad
+kss-colors-link-hover   = lighten(kss-colors-link, 20%)
+kss-colors-link-active  = #faa700
 
 html
   font-family: kss-font-body
+  font-size: 12px
+  @media (min-width: 600px)
+    font-size: 14px
+  @media (min-width: 800px)
+    font-size: 16px
+  @media (min-width: 1000px)
+    font-size: 18px
 
 h1, h2, h3, h4, h5, h6
   margin-top:    0
@@ -65,21 +78,13 @@ blockquote
   cite
     display: block
 
-// Colors
-kss-colors-background   = #fff
-
-kss-colors-foreground   = #444
-kss-colors-heading      = #111
-kss-colors-quotes       = #666
-
-kss-colors-link         = #0645ad
-kss-colors-link-visited = #0645ad
-kss-colors-link-hover   = lighten(kss-colors-link, 20%)
-kss-colors-link-active  = #faa700
-
 // ------------------------------------------------------------------------------
 // Wrap all of this template's base HTML styling inside a .kss-style selector.
 // ------------------------------------------------------------------------------
+
+#overview
+  margin-top: 0
+  line-height: t-scale(kss-ratio, 1.5)
 
 .kss-style
   color: kss-colors-foreground
