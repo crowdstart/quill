@@ -35,9 +35,7 @@ $shadowBoxShadow = 0px -$shadowDistance 0px 0px $borderColor inset;
 $borderBoxShadowColor = transparent;
 $borderBoxShadowWidth = 1px;
 $borderBoxShadow = 0px 0px 0px $borderBoxShadowWidth $borderBoxShadowColor inset;
-$boxShadow = $borderBoxShadow, 
-  $shadowBoxShadow
-;
+$boxShadow = $borderBoxShadow, $shadowBoxShadow;
 
 /* Icon */
 $iconOpacity = 0.8;
@@ -55,15 +53,9 @@ $loaderOffset = -($loaderSize / 2);
 $loaderMargin = $loaderOffset 0em 0em $loaderOffset;
 $invertedLoaderFillColor = rgba(0, 0, 0, 0.15);
 
-$transition = opacity 0.1s $transitionEasing, 
-  background-color 0.1s $transitionEasing, 
-  color 0.1s $transitionEasing, 
-  box-shadow 0.1s $transitionEasing, 
-  background 0.1s $transitionEasing
-;
-/*
-$willChange = box-shadow, transform, opacity, color, background;
-*/
+$transition = opacity 0.1s $transitionEasing, background-color 0.1s $transitionEasing, color 0.1s $transitionEasing, box-shadow 0.1s $transitionEasing, background 0.1s $transitionEasing;
+
+// $willChange = box-shadow, transform, opacity, color, background;
 $willChange = '';
 
 /*-------------------
@@ -90,10 +82,7 @@ $iconHoverOpacity = 0.85;
 /* Focused */
 $focusBackgroundColor = '';
 $focusBackgroundImage = '';
-$focusBoxShadow = $borderBoxShadow, 
-  0px 0px 1px rgba(81, 167, 232, 0.8) inset, 
-  0px 0px 3px 2px rgba(81, 167, 232, 0.8)
-;
+$focusBoxShadow = $borderBoxShadow, 0px 0px 1px rgba(81, 167, 232, 0.8) inset, 0px 0px 3px 2px rgba(81, 167, 232, 0.8);
 $focusColor = $hoveredTextColor;
 $iconFocusOpacity = 0.85;
 
@@ -101,9 +90,7 @@ $iconFocusOpacity = 0.85;
 $downBackgroundColor = #CCCCCC;
 $downBackgroundImage = '';
 $downPressedShadow = 0px 1px 4px 0px $borderColor inset !important;
-$downBoxShadow = $borderBoxShadow, 
-  $downPressedShadow
-;
+$downBoxShadow = $borderBoxShadow, $downPressedShadow;
 $downColor = $pressedTextColor;
 
 /* Active */
@@ -185,15 +172,13 @@ $basicTextTransform = none;
 /* Basic Hover */
 $basicHoverBackground = #FAFAFA;
 $basicHoverTextColor = $hoveredTextColor;
-$basicHoverBoxShadow = 0px 0px 0px $basicBorderSize $borderColor inset, 
-  0px 0px 0px 0px $borderColor inset
-;
+$basicHoverBoxShadow = 0px 0px 0px $basicBorderSize $borderColor inset, 0px 0px 0px 0px $borderColor inset;
+
 /* Basic Down */
 $basicDownBackground = #F8F8F8;
 $basicDownTextColor = $pressedTextColor;
-$basicDownBoxShadow = 0px 0px 0px $basicBorderSize rgba(0, 0, 0, 0.15) inset, 
-  0px 1px 4px 0px $borderColor inset
-;
+$basicDownBoxShadow = 0px 0px 0px $basicBorderSize rgba(0, 0, 0, 0.15) inset, 0px 1px 4px 0px $borderColor inset;
+
 /* Basic Active */
 $basicActiveBackground = $transparentBlack;
 $basicActiveBoxShadow = '';
